@@ -1,3 +1,4 @@
+import com.sun.javafx.tools.packager.Log;
 import io.reactivex.Observable;
 import io.reactivex.functions.Function;
 
@@ -31,5 +32,16 @@ public class Operators {
         Observable<Integer> source3 = Observable.fromArray(balls2)
                 .map(ballToindex);
         source3.subscribe(System.out::println);
+
+        //flatMap 함수 활용
+        Function<String,Observable<String>> getDoubleA =
+                ball -> Observable.just(ball+"A",ball+"A");
+
+        String[] balls3 = {"1","3","5"};
+
+        Observable<String> source4 = Observable.fromArray(balls3)
+                .flatMap(getDoubleA);
+        source4.subscribe(System.out::println);
+
     }
 }
