@@ -43,5 +43,11 @@ public class Operators {
                 .flatMap(getDoubleA);
         source4.subscribe(System.out::println);
 
+        //filter 함수 활용
+        String[] objs = {"1 CIRCLE", "2 DIAMOND", "3 TRIANGLE",
+                         "4 DIAMOND", "5 CIRCLE", "6 HEXAGON"};
+        Observable<String> source5 = Observable.fromArray(objs)
+                .filter(obj -> obj.endsWith("CIRCLE"));
+        source5.subscribe(System.out::println);
     }
 }
