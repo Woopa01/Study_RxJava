@@ -1,4 +1,5 @@
 import com.sun.javafx.tools.packager.Log;
+import io.reactivex.Maybe;
 import io.reactivex.Observable;
 import io.reactivex.functions.Function;
 
@@ -49,5 +50,10 @@ public class Operators {
         Observable<String> source5 = Observable.fromArray(objs)
                 .filter(obj -> obj.endsWith("CIRCLE"));
         source5.subscribe(System.out::println);
+
+        //reduce 함수 활용
+        Maybe<String> source6 = Observable.fromArray(balls3)
+                .reduce((ball1,ball2) -> ball2 + "(" + ball1 + ")");
+        source6.subscribe(System.out::println);
     }
 }
