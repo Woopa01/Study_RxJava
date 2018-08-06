@@ -13,5 +13,10 @@ public class Operators2 {
                 .map(data -> (data+1) * 100)
                 .take(5);
         source1.subscribe(System.out::println);
+
+        //range 함수
+        Observable<Integer> source2 = Observable.range(1,10)
+                .filter(number -> number % 2 == 0);
+        source2.subscribe(System.out::println);
     }
 }
