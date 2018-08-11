@@ -21,7 +21,7 @@ public class Pattern {
                 .reduce((sale1 , sale2) -> sale1 + sale2);
 
         tvSales.subscribe(tot -> System.out.println("Tv Sales : $" + tot));
-        
+
 
     }
 }
