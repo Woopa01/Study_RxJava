@@ -26,5 +26,17 @@ public class Operators2 {
 
         source3.doOnComplete(() -> Log.debug("On Complete"))
                 .subscribe(Log::info);
+
+        //concatMap 함수
+        Observable<String> source4 = Observable.interval(100L,TimeUnit.MILLISECONDS)
+                .map(Long::intValue)
+                .map(idx -> balls[idx])
+                .take(balls.length)
+                .concatMap(ball -> Observable.interval(200L,TimeUnit.MILLISECONDS)
+                    .map(notUsed -> ball+"A")
+                    .take(2)
+        );
+
+        source4.subscribe(System.out::println);
     }
 }
